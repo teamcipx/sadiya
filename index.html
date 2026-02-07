@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Rose Day Sadiya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- Lovely Soft Theme --- */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Pastel Gradient Background */
+            background: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+            font-family: 'Hind Siliguri', sans-serif;
+            position: relative;
+        }
+
+        /* Animated Background Shapes */
+        .bg-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: moveShape 20s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes moveShape {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(100px, 100px) rotate(360deg); }
+        }
+
+        /* Glassmorphism Card */
+        .card {
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 40px;
+            text-align: center;
+            max-width: 320px;
+            width: 90%;
+            z-index: 10;
+            transform: translateY(0);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #fff;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* GIF Container - Perfect Circle */
+        .gif-container {
+            width: 160px;
+            height: 160px;
+            margin: 15px auto;
+            border-radius: 50%;
+            background: white;
+            border: 5px solid rgba(255, 255, 255, 0.6);
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Using the direct Tenor GIF link for better quality than embed script */
+        .gif-container img {
+            width: 110%; /* Slightly zoomed to fit nicely */
+            height: 110%;
+            object-fit: cover;
+        }
+
+        /* Bengali Message */
+        .message {
+            color: #5c2a49;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 20px 0;
+            line-height: 1.5;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+        }
+
+        /* Button */
+        .btn {
+            background: #fff;
+            color: #d57eeb;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Falling Elements */
+        .falling-item {
+            position: fixed;
+            top: -10vh;
+            z-index: 100;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(720deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Decoration -->
+    <div class="bg-shape" style="top: 10%; left: 10%; width: 100px; height: 100px;"></div>
+    <div class="bg-shape" style="bottom: 20%; right: 15%; width: 150px; height: 150px; animation-duration: 25s;"></div>
+
+    <div class="card">
+        <h1>Happy Rose Day<br>Sadiya</h1>
+
+        <div class="gif-container">
+            <!-- Your specific Tenor GIF (Direct Link) -->
+            <img src="https://media.tenor.com/On7kvX5nzTEAAAAC/mochi-peach-cat-rose.gif" alt="Cute Cat Giving Rose">
+        </div>
+
+        <p class="message">
+            শুভ রোজ ডে! 🌹<br>
+            তোমার দিনটি ফুলের মতোই সুন্দর আর স্নিগ্ধ হোক। সবসময় এভাবেই হাসিখুশি থেকো!
+        </p>
+
+        <button class="btn" onclick="startMagic()">Touch Me ✨</button>
+    </div>
+
+    <script>
+        function startMagic() {
+            const btn = document.querySelector('.btn');
+            btn.innerText = "Enjoy! 🌸";
+            
+            // Create falling flowers
+            const items = ['🌹', '🌷', '🌸', '✨', '😻'];
+            
+            let count = 0;
+            const interval = setInterval(() => {
+                const el = document.createElement('div');
+                el.classList.add('falling-item');
+                el.innerText = items[Math.floor(Math.random() * items.length)];
+                
+                // Random Size
+                const size = Math.random() * 20 + 20;
+                el.style.fontSize = size + 'px';
+                
+                // Random Position
+                el.style.left = Math.random() * 100 + 'vw';
+                
+                // Random Speed
+                el.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                document.body.appendChild(el);
+
+                // Cleanup
+                setTimeout(() => {
+                    el.remove();
+                }, 5000);
+
+                count++;
+                if(count > 50) clearInterval(interval); // Stop after 50 items
+            }, 100);
+        }
+    </script>
+</body>
+</html>
